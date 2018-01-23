@@ -73,15 +73,14 @@ $(function() {
       * function is called and completes its work, there is at least
       * a single .entry element within the .feed container.
       */
-      beforeEach(function(done) {
+      /*beforeEach(function(done) {
           loadFeed(0, done);
       });
 
-      it('there is at least 1 entry', function(done) {
-          expect($('.feed .entry')).not.toBe(null);
-          done();
+      it('there is at least 1 entry', function() {
+          expect($('.feed .entry').length).toBeGreaterThan(0);
       });
-
+*/
     });
 
     describe('New Feed Selection', function() {
@@ -91,12 +90,14 @@ $(function() {
       */
       var compareTo;
       beforeEach(function(done) {
-        compareTo = $('.feed .entry')[0].innerHTML;
-        loadFeed(0, loadFeed(1, done));
+        loadFeed(0, function() {
+          compareTo = $('.feed .entry').html();
+          loadFeed(1, done);
+        });
       });
 
       it('content changes when a new feed is loaded', function(done) {
-        expect($('.feed .entry')[0].innerHTML).not.toBe(compareTo);
+        expect($('.feed .entry').html()).not.toBe(compareTo);
         done();
       });
     });
