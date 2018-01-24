@@ -73,14 +73,14 @@ $(function() {
       * function is called and completes its work, there is at least
       * a single .entry element within the .feed container.
       */
-      /*beforeEach(function(done) {
+      beforeEach(function(done) {
           loadFeed(0, done);
       });
 
       it('there is at least 1 entry', function() {
           expect($('.feed .entry').length).toBeGreaterThan(0);
       });
-*/
+
     });
 
     describe('New Feed Selection', function() {
